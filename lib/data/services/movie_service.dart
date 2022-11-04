@@ -84,35 +84,14 @@ class MovieService {
     }
   }
 
-  // Future<List<Movie>> getSearchMovieDetails(String query) async {
-  //   List<Movie> movies = [];
-  //   if (query.isNotEmpty) {
-  //     final apiDatas = await _dio.get(
-  //       "https://api.themoviedb.org/3/search/movie?api_key=${_environmentConfig.movieApiKey}&language=en-US&query=$query&page=1",
-  //     );
-
-  //     for (final apiData in apiDatas.data["results"]) {
-  //       if (movies.length == 3) {
-  //         break;
-  //       }
-  //       Movie movie = await getMoviesDetail(apiData["id"]);
-  //       movies.add(movie);
-  //     }
-  //   }
-  //   return movies;
-  // }
-
   Future<List<Movie>> getSearchMovieDetails(query) async {
     List<Movie> movies = [];
-    // List<Movie> searchList = [];
 
     if (query.isNotEmpty) {
       final apiDatas = await _dio.get(
         "https://api.themoviedb.org/3/search/movie?api_key=${_environmentConfig.movieApiKey}&language=en-US&query=$query&page=1",
       );
       for (final apiData in apiDatas.data["results"]) {
-        // Movie searchData = Movie.fromJson(apiData);
-        // searchList.add(searchData);
         if (movies.length == 5) {
           break;
         }

@@ -34,12 +34,9 @@ class _SearchBarWidgetState extends ConsumerState<SearchBarWidget> {
   Widget build(BuildContext context) {
     return Consumer(
       builder: (context, ref, child) {
-        // List<Movie>? searchDetails =
-        //     ref.watch<SearchMovieNotifier>(searchMovieProvider).searchDetails;
         return Container(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          height: 50,
-          // width: MediaQuery.of(context).size.width * 0.6,
+          height: 55,
           decoration: BoxDecoration(
               color: const Color(0xFF3A3F47),
               borderRadius: BorderRadius.circular(20)),

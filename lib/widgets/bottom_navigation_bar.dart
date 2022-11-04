@@ -42,33 +42,38 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
     final selectedIndex = ref.watch(pageIndexProvider);
     return Scaffold(
       body: _pages[selectedIndex]["page"],
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: selectedIndex,
-        elevation: 2.0,
-        backgroundColor: AppStyle.primaryColor,
-        items: const [
-          BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
-            label: 'Home',
-            icon: Icon(Icons.home),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
-            label: 'Search',
-            icon: Icon(Icons.search),
-          ),
-          BottomNavigationBarItem(
-            backgroundColor: Colors.grey,
-            label: 'Watch list',
-            icon: Icon(Icons.watch_later),
-          ),
-        ],
-        onTap: (index) {
-          // setState(() {
-          //   _selectPage(index);
-          // });
-          ref.read(pageIndexProvider.notifier).update((state) => index);
-        },
+      bottomNavigationBar: Container(
+        height: 70,
+        decoration: const BoxDecoration(
+            border: Border(top: BorderSide(color: Colors.blue, width: 2.0))),
+        child: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          elevation: 2.0,
+          backgroundColor: AppStyle.primaryColor,
+          items: const [
+            BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              label: 'Home',
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              label: 'Search',
+              icon: Icon(Icons.search),
+            ),
+            BottomNavigationBarItem(
+              backgroundColor: Colors.grey,
+              label: 'Watch list',
+              icon: Icon(Icons.watch_later),
+            ),
+          ],
+          onTap: (index) {
+            // setState(() {
+            //   _selectPage(index);
+            // });
+            ref.read(pageIndexProvider.notifier).update((state) => index);
+          },
+        ),
       ),
     );
   }

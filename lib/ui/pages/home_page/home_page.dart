@@ -88,7 +88,7 @@ class _HomePageState extends ConsumerState<HomePage>
                         },
                       ),
                   const SizedBox(
-                    height: 30,
+                    height: 20,
                   ),
                   TabBar(
                     indicatorColor: Colors.grey,
@@ -100,6 +100,9 @@ class _HomePageState extends ConsumerState<HomePage>
                               child: Text(tabText),
                             ))
                         .toList(),
+                  ),
+                  const SizedBox(
+                    height: 10,
                   ),
                 ],
               ),
