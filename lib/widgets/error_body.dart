@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_tmdb_riverpod/data/providers/movies_future_provider.dart';
 
 class ErrorBody extends ConsumerWidget {
   const ErrorBody(

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:movie_tmdb_riverpod/data/providers/movie_service_provider.dart';
 import 'package:movie_tmdb_riverpod/data/providers/movies_future_provider.dart';
 import 'package:movie_tmdb_riverpod/data/styles/app_style.dart';
 import 'package:movie_tmdb_riverpod/widgets/dio/dio_exception.dart';
 import 'package:movie_tmdb_riverpod/widgets/error_body.dart';
 import 'package:movie_tmdb_riverpod/widgets/movie_box.dart';
 import 'package:movie_tmdb_riverpod/widgets/search_bar.dart';
-import 'package:movie_tmdb_riverpod/widgets/tab_bar/tab_bar.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/home_page/tab_bar/tab_bar.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -52,7 +51,10 @@ class _HomePageState extends ConsumerState<HomePage>
                   ),
                   const Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: SearchBar(),
+                    child: SearchBarWidget(
+                      isHomeScreen: true,
+                      textEnabled: false,
+                    ),
                   ),
                   ref.watch(moviesFutureProvider("Top Rated")).when(
                         error: (e, s) {

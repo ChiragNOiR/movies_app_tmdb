@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_tmdb_riverpod/widgets/tab_bar/components/tab_bar_component.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/home_page/tab_bar/components/tab_bar_component.dart';
 
 class MovieTabBarView extends StatelessWidget {
   const MovieTabBarView({

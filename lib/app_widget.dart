@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_tmdb_riverpod/data/styles/app_style.dart';
-import 'package:movie_tmdb_riverpod/ui/pages/splash_screen/splash_screen.dart';
+import 'package:movie_tmdb_riverpod/ui/screens/splash_screen/splash_screen.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});

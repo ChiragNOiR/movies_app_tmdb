@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movie_tmdb_riverpod/data/providers/page_index_provider.dart';
 import 'package:movie_tmdb_riverpod/data/styles/app_style.dart';
 import 'package:movie_tmdb_riverpod/ui/pages/home_page/home_page.dart';
-import 'package:movie_tmdb_riverpod/ui/pages/search_page/search_page.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/search_page/components/serach_body.dart';
+
 import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch_list.dart';
 
 class BottomNavBar extends ConsumerStatefulWidget {
@@ -15,38 +17,33 @@ class BottomNavBar extends ConsumerStatefulWidget {
 }
 
 class _BottomNavBarState extends ConsumerState<BottomNavBar> {
-  int _currentIndex = 0;
-
   List<Map<String, dynamic>> get _pages {
-    return const [
+    return [
       {
-        "page": HomePage(),
+        "page": const HomePage(),
         "name": "Home",
         "action": null,
       },
       {
-        "page": SearchPage(),
+        "page": const SearchTab(),
         "name": "Search",
         "action": null,
       },
       {
-        "page": WatchList(),
+        "page": const WatchList(),
         "name": "Watch list",
         "action": null,
       },
     ];
   }
 
-  void _selectPage(int index) {
-    _currentIndex = index;
-  }
-
   @override
   Widget build(BuildContext context) {
+    final selectedIndex = ref.watch(pageIndexProvider);
     return Scaffold(
-      body: _pages[_currentIndex]["page"],
+      body: _pages[selectedIndex]["page"],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: selectedIndex,
         elevation: 2.0,
         backgroundColor: AppStyle.primaryColor,
         items: const [
@@ -67,9 +64,10 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
           ),
         ],
         onTap: (index) {
-          setState(() {
-            _selectPage(index);
-          });
+          // setState(() {
+          //   _selectPage(index);
+          // });
+          ref.read(pageIndexProvider.notifier).update((state) => index);
         },
       ),
     );

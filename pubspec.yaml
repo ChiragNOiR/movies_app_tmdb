@@ -39,6 +39,7 @@ dependencies:
   google_fonts: ^3.0.1
   dio: ^4.0.6
   cached_network_image: ^3.2.2
+  toast: ^0.2.9
 
 dev_dependencies:
   flutter_test:

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_tmdb_riverpod/data/models/movie.dart';
-import 'package:movie_tmdb_riverpod/widgets/dio/dio_exception.dart';
+import 'package:movie_tmdb_riverpod/ui/screens/movie_details/movie_details.dart';
 
 class MovieBoxListView extends StatelessWidget {
   final Movie movie;
@@ -12,12 +12,21 @@ class MovieBoxListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(16),
-        child: CachedNetworkImage(
-          imageUrl: movie.posterImageUrl,
-          width: 150,
-          fit: BoxFit.fill,
+      child: GestureDetector(
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => MovieDetails(
+                id: movie.id,
+              ),
+            )),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: CachedNetworkImage(
+            imageUrl: movie.posterImageUrl,
+            width: 150,
+            fit: BoxFit.fill,
+          ),
         ),
       ),
     );
@@ -31,12 +40,21 @@ class MovieBoxGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: CachedNetworkImage(
-        imageUrl: movie.posterImageUrl,
-        width: 150,
-        fit: BoxFit.fill,
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MovieDetails(
+              id: movie.id,
+            ),
+          )),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: CachedNetworkImage(
+          imageUrl: movie.posterImageUrl,
+          width: 150,
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

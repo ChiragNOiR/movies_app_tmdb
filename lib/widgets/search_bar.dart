@@ -1,26 +1,82 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:movie_tmdb_riverpod/data/providers/movie_search_provider.dart';
+import 'package:movie_tmdb_riverpod/data/providers/page_index_provider.dart';
 
-class SearchBar extends StatelessWidget {
-  const SearchBar({super.key});
+class SearchBarWidget extends ConsumerStatefulWidget {
+  const SearchBarWidget(
+      {super.key, this.isHomeScreen = false, this.textEnabled = false});
+  final bool isHomeScreen;
+  final bool textEnabled;
+  @override
+  ConsumerState<SearchBarWidget> createState() => _SearchBarWidgetState();
+}
+
+class _SearchBarWidgetState extends ConsumerState<SearchBarWidget> {
+  TextEditingController searchNameController = TextEditingController();
+  late FocusNode myFocusNode;
+  @override
+  void initState() {
+    super.initState();
+    myFocusNode = FocusNode();
+    if (!widget.isHomeScreen) {
+      myFocusNode.requestFocus();
+    }
+  }
+
+  @override
+  void dispose() {
+    myFocusNode.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 60,
-      child: TextField(
-        style: const TextStyle(color: Colors.white),
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: const Color(0xFF3A3F47),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(25.0),
-            borderSide: BorderSide.none,
+    return Consumer(
+      builder: (context, ref, child) {
+        // List<Movie>? searchDetails =
+        //     ref.watch<SearchMovieNotifier>(searchMovieProvider).searchDetails;
+        return Container(
+          padding: const EdgeInsets.symmetric(horizontal: 10),
+          height: 50,
+          // width: MediaQuery.of(context).size.width * 0.6,
+          decoration: BoxDecoration(
+              color: const Color(0xFF3A3F47),
+              borderRadius: BorderRadius.circular(20)),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: InkWell(
+              onTap: () {
+                if (widget.isHomeScreen) {
+                  ref.read(pageIndexProvider.notifier).state = 1;
+                } else {
+                  return;
+                }
+              },
+              child: TextFormField(
+                focusNode: myFocusNode,
+                controller: searchNameController,
+                enabled: widget.textEnabled,
+                style: const TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                        onPressed: () {
+                          Future.microtask((() => ref
+                              .read(searchMovieProvider)
+                              .loadSearchDetail(searchNameController.text)));
+                        },
+                        icon: const Icon(
+                          Icons.search,
+                          color: Color(0xFF67686D),
+                        )),
+                    border: InputBorder.none,
+                    hintText: "Search",
+                    hintStyle: const TextStyle(color: Color(0xFF67686D))),
+              ),
+            ),
           ),
-          hintText: "Search",
-          suffixIcon: const Icon(Icons.search),
-          suffixIconColor: Colors.grey,
-        ),
-      ),
+        );
+      },
     );
   }
 }
