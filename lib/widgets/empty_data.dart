@@ -8,12 +8,9 @@ class EmptyData extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: MaterialButton(
-            child:
-                const Text('No Matched Found!!! Search using correct keyword.'),
-            onPressed: () =>
-                showToast("Show Long Toast", duration: Toast.lengthLong)),
+        // padding: const EdgeInsets.all(10.0),
+        padding: const EdgeInsets.fromLTRB(10, 150, 10, 50),
+        child: Image.asset('assets/images/Search cant be found.png'),
       ),
     );
   }

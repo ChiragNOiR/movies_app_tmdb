@@ -64,7 +64,7 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
             BottomNavigationBarItem(
               backgroundColor: Colors.grey,
               label: 'Watch list',
-              icon: Icon(Icons.watch_later),
+              icon: Icon(Icons.bookmark),
             ),
           ],
           onTap: (index) {

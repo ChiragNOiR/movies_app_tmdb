@@ -8,7 +8,7 @@ import 'package:movie_tmdb_riverpod/data/styles/app_style.dart';
 import 'package:movie_tmdb_riverpod/ui/screens/movie_details/detail_tab_bar/detail_tab_bar.dart';
 import 'package:movie_tmdb_riverpod/widgets/dio/dio_exception.dart';
 import 'package:movie_tmdb_riverpod/widgets/error_body.dart';
-import 'package:movie_tmdb_riverpod/widgets/watch%20list%20widgets/movie_rating.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch%20list%20widgets/movie_rating.dart';
 
 class MovieDetails extends ConsumerStatefulWidget {
   const MovieDetails({Key? key, required this.id}) : super(key: key);

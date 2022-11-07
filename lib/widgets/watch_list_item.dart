@@ -4,10 +4,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_tmdb_riverpod/data/models/movie.dart';
 import 'package:movie_tmdb_riverpod/ui/screens/movie_details/movie_details.dart';
 import 'package:movie_tmdb_riverpod/widgets/custom_image.dart';
-import 'package:movie_tmdb_riverpod/widgets/watch%20list%20widgets/duration.dart';
-import 'package:movie_tmdb_riverpod/widgets/watch%20list%20widgets/genre_detail.dart';
-import 'package:movie_tmdb_riverpod/widgets/watch%20list%20widgets/movie_rating.dart';
-import 'package:movie_tmdb_riverpod/widgets/watch%20list%20widgets/year.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch%20list%20widgets/duration.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch%20list%20widgets/genre_detail.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch%20list%20widgets/movie_rating.dart';
+import 'package:movie_tmdb_riverpod/ui/pages/watch_list/watch%20list%20widgets/year.dart';
 
 class WatchListItem extends ConsumerWidget {
   const WatchListItem(this.movie, {super.key});

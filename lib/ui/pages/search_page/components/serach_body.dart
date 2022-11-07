@@ -52,63 +52,6 @@ class _SearchTabState extends ConsumerState<SearchTab> {
                   child: ListView.builder(
                       itemCount: searchDetails.length,
                       itemBuilder: ((context, index) {
-                        // return Padding(
-                        //   padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                        //   child: Row(
-                        //     children: [
-                        //       ClipRRect(
-                        //         borderRadius: BorderRadius.circular(10),
-                        //         child: CachedNetworkImage(
-                        //           imageUrl: searchDetails[index].posterpath,
-                        //           fit: BoxFit.cover,
-                        //           height:
-                        //               MediaQuery.of(context).size.height * 0.12,
-                        //           width: 90,
-                        //         ),
-                        //       ),
-                        //       const SizedBox(
-                        //         width: 30,
-                        //       ),
-                        //       Padding(
-                        //         padding: const EdgeInsets.only(bottom: 70),
-                        //         child: Column(
-                        //           crossAxisAlignment: CrossAxisAlignment.start,
-                        //           children: [
-                        //             Text(searchDetails[index].name,
-                        //                 style: GoogleFonts.poppins(
-                        //                     color: Colors.white, fontSize: 18)),
-                        //             Row(
-                        //               mainAxisAlignment:
-                        //                   MainAxisAlignment.spaceBetween,
-                        //               children: [
-                        //                 const Icon(
-                        //                   Icons.star_border_outlined,
-                        //                   color: Color(0xFFFF8700),
-                        //                   size: 18,
-                        //                 ),
-                        //                 Padding(
-                        //                   padding: const EdgeInsets.symmetric(
-                        //                       horizontal: 5),
-                        //                   child: Text(
-                        //                     searchDetails[index]
-                        //                         .rating
-                        //                         .toString(),
-                        //                     style: const TextStyle(
-                        //                         color: Color(0xFFFF8700),
-                        //                         fontWeight: FontWeight.bold),
-                        //                   ),
-                        //                 ),
-                        //               ],
-                        //             ),
-                        //             Text(searchDetails[index].releaseDate,
-                        //                 style: GoogleFonts.poppins(
-                        //                     color: Colors.white, fontSize: 12)),
-                        //           ],
-                        //         ),
-                        //       )
-                        //     ],
-                        //   ),
-                        // );
                         return WatchListItem(searchDetails[index]);
                       })),
                 );
